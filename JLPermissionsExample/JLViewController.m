@@ -97,14 +97,22 @@
 }
 
 - (IBAction)contacts:(id)sender {
-  [[JLContactsPermission sharedInstance] setExtraAlertEnabled:self.showExtraAlertSwitch.on];
-  [[JLContactsPermission sharedInstance] authorize:^(bool granted, NSError *error) {
-    NSLog(@"contacts returned %@ with error %@", @(granted), error);
-    [self presentReenableVCForCore:[JLContactsPermission sharedInstance]
-                           granted:granted
-                             error:error];
-    [self updateStatusLabels];
-  }];
+//  [[JLContactsPermission sharedInstance] setExtraAlertEnabled:self.showExtraAlertSwitch.on];
+//  [[JLContactsPermission sharedInstance] authorize:^(bool granted, NSError *error) {
+//    NSLog(@"contacts returned %@ with error %@", @(granted), error);
+//    [self presentReenableVCForCore:[JLContactsPermission sharedInstance]
+//                           granted:granted
+//                             error:error];
+//    [self updateStatusLabels];
+//  }];
+
+    UIAlertView *alert1 = [[UIAlertView alloc] initWithTitle:@"First Alert!"
+                                                     message:@"This is your first UIAlertview message."
+                                                    delegate:nil
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles:nil];
+    
+    [alert1 show];
 }
 
 - (IBAction)photoLibrary:(id)sender {
@@ -117,14 +125,22 @@
 }
 
 - (IBAction)calendar:(id)sender {
-  [[JLCalendarPermission sharedInstance] setExtraAlertEnabled:self.showExtraAlertSwitch.on];
-  [[JLCalendarPermission sharedInstance] authorize:^(bool granted, NSError *error) {
-    NSLog(@"calendar returned %@ with error %@", @(granted), error);
-    [self presentReenableVCForCore:[JLCalendarPermission sharedInstance]
-                           granted:granted
-                             error:error];
+    [[JLCalendarPermission sharedInstance] setExtraAlertEnabled:self.showExtraAlertSwitch.on];
+    [[JLCalendarPermission sharedInstance] authorize:^(bool granted, NSError *error) {
+        NSLog(@"calendar returned %@ with error %@", @(granted), error);
+        [self presentReenableVCForCore:[JLCalendarPermission sharedInstance]
+                               granted:granted
+                                 error:error];
     [self updateStatusLabels];
   }];
+
+    UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"Second alert!"
+                                                     message:@"This is your second UIAlertview message."
+                                                    delegate:nil
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles:nil];
+    
+    [alert2 show];
 }
 
 - (IBAction)reminders:(id)sender {
